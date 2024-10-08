@@ -15,6 +15,10 @@ int main(){
     showChoice(player);
 
     computer = getComputerChoice();
+    std::cout << "Copmuter's choice: ";
+    showChoice(computer);
+
+    chooseWinner(player, computer);
 
     return 0;
 }
@@ -35,6 +39,13 @@ char getComputerChoice(){
     
     srand(time(0));
     int num = rand() % 3 + 1;
+
+    switch(num){
+        case 1: return 'r';               
+        case 2: return 'p';            
+        case 3: return 's';
+        //break is unneccecary when using return function, it does the same thing.
+    }
 }
 void showChoice(char choice){
 
@@ -47,3 +58,38 @@ void showChoice(char choice){
                   break;
     }
 }
+void chooseWinner(char player, char computer){
+
+    switch(player){
+        case 'r':   if(computer == 'r'){
+                        std::cout << "It's a tie!\n";
+                    }
+                    else if(computer == 'p'){
+                        std::cout << "You lose!\n";
+                    }
+                    else{
+                        std::cout << "you win!\n";
+                    }
+                    break;
+        case 'p':   if(computer == 'p'){
+                        std::cout << "It's a tie!\n";
+                    }
+                    else if(computer == 's'){
+                        std::cout << "You lose!\n";
+                    }
+                    else{
+                        std::cout << "you win!\n";
+                    }
+                    break;
+        case 's':   if(computer == 's'){
+                        std::cout << "It's a tie!\n";
+                    }
+                    else if(computer == 'r'){
+                        std::cout << "You lose!\n";
+                    }
+                    else{
+                        std::cout << "you win!\n";
+                    }
+                    break;           
+        }
+    }
